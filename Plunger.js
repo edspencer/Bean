@@ -99,7 +99,7 @@ Bean.Plunger = function(config) {
      * @type Number
      * Width of the border (defaults to 10)
      */
-    borderWidth: 10
+    borderWidth: 15
   };
   
   for (var key in config) {

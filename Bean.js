@@ -244,9 +244,7 @@ Bean.prototype = {
     
     //take a key frame if necessary
     if (this.takeKeyFrame) {
-      this.currentKeyFrame = Canvas2Image.saveAsPNG(this.canvas, true);
-      
-      // this.currentKeyFrame = this.context.getImageData(0, 0, 500, 500);
+      this.currentKeyFrame = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
       
       //we've now taken the keyframe, no need to take another next frame
       this.takeKeyFrame = false;
@@ -314,9 +312,9 @@ Bean.prototype = {
     var defaults = {
       fallDuration: this.fallDuration,
       image       : this.images[Math.floor(Math.random() * this.images.length)],
-      endRotation : Math.random() * Math.PI,
-      xPos        : Math.random() * this.canvas.width,
-      yPos        : Math.random() * this.canvas.height
+      endRotation : (Math.random() * Math.PI) - (Math.PI / 2),
+      xPos        : Math.random() * (this.canvas.width  - 100) + 50,
+      yPos        : Math.random() * (this.canvas.height - 100) + 50
     };
     
     for (var key in config) {
@@ -336,11 +334,7 @@ Bean.prototype = {
   clearCanvas: function(redrawKeyFrame) {
     this.withContext(function(context) {
       if (redrawKeyFrame !== false && this.currentKeyFrame != undefined) {
-        try {
-          context.drawImage(this.currentKeyFrame, 0, 0);
-        } catch(e) {
-          console.log(e);
-        };
+        context.putImageData(this.currentKeyFrame, 0, 0, this.canvas.height, this.canvas.width);
       } else {
         context.fillStyle = this.backgroundColor;
         context.fillRect(0, 0, this.canvas.width, this.canvas.height);
