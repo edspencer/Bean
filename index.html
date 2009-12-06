@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Silly Bean</title>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.0.0/build/cssreset/reset-min.css" />
+    <script type="text/javascript" src="Bean.js"></script>
+    <script type="text/javascript" src="Plunger.js"></script>
+    <script type="text/javascript" src="Plungers.js"></script>
+  </head>
+  <body>
+    <canvas id="main" width="750" height="500"></canvas>
+    <script type="text/javascript" charset="utf-8">
+      var bean = new Bean({
+        imageUrls: [
+          'images/DoubleCluster_cs_fleming.jpg',
+          'images/NGC660Hagar0_c900.jpg',
+          'images/rosette_ebersole.jpg',
+          'images/filaments_iac.jpg',
+          'images/sunearthpanel_sts129.jpg'
+        ],
+        canvasId : 'main',
+        fillBody : true
+      });
+      
+      bean.onReady(function(bean) {
+        bean.start();
+      });
+    </script>
+    
+    <script type="text/javascript" src="vendor/base64.js"></script>
+    <script type="text/javascript" src="vendor/Canvas2Image.js"></script>
+  </body>
+</html>
