@@ -2,6 +2,9 @@
   <head>
     <title>Silly Bean</title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.0.0/build/cssreset/reset-min.css" />
+    <style type="text/css" media="screen">
+      body {background-color: #000;}
+    </style>
     <script type="text/javascript" src="Bean.js"></script>
     <script type="text/javascript" src="Plunger.js"></script>
     <script type="text/javascript" src="Plungers.js"></script>
@@ -13,16 +16,19 @@
         imageUrls: [
           'images/DoubleCluster_cs_fleming.jpg',
           'images/NGC660Hagar0_c900.jpg',
-          'images/rosette_ebersole.jpg',
+          // 'images/rosette_ebersole.jpg',
           'images/filaments_iac.jpg',
-          'images/sunearthpanel_sts129.jpg'
+          'images/m78wide_tvdavis900.jpg',
+          'images/sunearthpanel_sts129.jpg',
+          'images/NGC253_SSRO_900.jpg',
+          'images/Ophcloud_spitzer_c800.jpg'
         ],
         canvasId : 'main',
         fillBody : true
       });
       
       bean.onReady(function(bean) {
-        bean.start();
+        setTimeout(function() {bean.start();}, 2000);
       });
     </script>
   </body>

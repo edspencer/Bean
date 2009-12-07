@@ -1,7 +1,7 @@
 /**
  * @class Bean
  * Bean is a silly thing which uses Canvas to drop images onto the screen in
- * a stack - imaging dropping a bunch of photographs onto a table and you'll
+ * a stack - imagine dropping a bunch of photographs onto a table and you'll
  * understand what Bean does.  Why is it called Bean though? I once knew a man named Bean.
  */
 Bean = function(config) {
@@ -260,12 +260,6 @@ Bean.prototype = {
       });
     }
     
-    // plungers.each(function(plunger) {
-    //   this.withContext(function(context) {
-    //     plunger.draw(context);
-    //   });
-    // }, this);
-    
     this.lastFrameTime = new Date();
   },
   
@@ -309,10 +303,20 @@ Bean.prototype = {
   addPlunger: function(config) {
     config = config || {};
     
+    var imageId = 0;
+    if (this.randomize) {
+      imageId = Math.floor(Math.random() * this.images.length);
+    } else {
+      this.lastImageId = this.lastImageId || 0;
+      this.lastImageId ++;
+      this.lastImageId = this.lastImageId % this.images.length;
+      imageId = this.lastImageId;
+    }
+    
     var defaults = {
       fallDuration: this.fallDuration,
-      image       : this.images[Math.floor(Math.random() * this.images.length)],
-      endRotation : (Math.random() * Math.PI) - (Math.PI / 2),
+      image       : this.images[imageId],
+      endRotation : (Math.random() * Math.PI / 2) - (Math.PI / 4),
       xPos        : Math.random() * (this.canvas.width  - 100) + 50,
       yPos        : Math.random() * (this.canvas.height - 100) + 50
     };

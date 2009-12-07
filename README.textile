@@ -1,0 +1,29 @@
+h1. Bean: A OS X screensaver in JavaScript
+
+p. Bean is a silly little thing that uses JavaScript and the Canvas tag to emulate one of the screensavers from OS X.
+
+p. See a video of it in action at http://vimeo.com/8023175, or run it in your own browser at http://code.edspencer.net/Bean/index.html
+
+p. Here's how to run it yourself, if you ever find a reason to do so:
+
+bc.. var bean = new Bean({
+  imageUrls: [
+    'images/DoubleCluster_cs_fleming.jpg',
+    'images/NGC660Hagar0_c900.jpg',
+    'images/filaments_iac.jpg',
+    'images/m78wide_tvdavis900.jpg',
+    'images/sunearthpanel_sts129.jpg',
+    'images/NGC253_SSRO_900.jpg',
+    'images/Ophcloud_spitzer_c800.jpg'
+  ],
+  canvasId : 'main',
+  fillBody : true
+});
+
+bean.onReady(function(bean) {
+  setTimeout(function() {bean.start();}, 2000);
+});
+
+p. You can of course supply any image urls for it to use. Note however that security restrictions with canvas mean that you should only use local images (e.g. from the same domain), otherwise we can't apply performance optimisations and it quickly becomes hella slow.
+
+p. The code is well documented so feel free to hack away with it!
